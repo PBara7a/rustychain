@@ -30,6 +30,7 @@ class Blockchain {
         chain[i];
 
       const actualPreviousBlockHash = chain[i - 1].hash;
+      const lastDifficulty = chain[i - 1].difficulty;
 
       const validHash = cryptographicHash(
         timestamp,
@@ -40,7 +41,11 @@ class Blockchain {
       );
 
       if (previousBlockHash !== actualPreviousBlockHash) return false;
+
       if (hash !== validHash) return false;
+
+      //Makes sure the difficulty does not jump more than 1, up or down
+      if (Math.abs(lastDifficulty - difficulty) > 1) return false;
     }
 
     return true;

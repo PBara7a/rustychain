@@ -1,5 +1,6 @@
 const { GENESIS_DATA, MINE_RATE } = require("./utils/config");
 const cryptographicHash = require("./utils/cryptographicHash");
+const hexToBinary = require("hex-to-binary");
 
 class Block {
   constructor({ timestamp, previousBlockHash, data, hash, nonce, difficulty }) {
@@ -36,7 +37,12 @@ class Block {
         nonce,
         difficulty
       );
-    } while (hash.substring(0, difficulty) !== "0".repeat(difficulty));
+    } while (
+      // Using the binary representation of the hash makes the difficulty
+      // adjustments more precise and brings the average time of mining a
+      // block closer to the set mining rate.
+      hexToBinary(hash).substring(0, difficulty) !== "0".repeat(difficulty)
+    );
 
     const minedBlock = new Block({
       timestamp,

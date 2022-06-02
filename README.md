@@ -9,4 +9,6 @@ What I have learned building this project:
   - How blocks are 'linked' to form a chain
   - Chain validation and chain replacement
   - What are the roles of nonce and difficulty when mining a block
-- Exposed me to different modules (crypto)
+  - How to prevent difficulty jumps
+  - How binary hashes allow superior accuracy in difficulty adjustments, when compared with hex hashes (SHA-256: hex=64 chars, binary=256 bits)
+- Exposed me to some different modules (crypto, hex-to-binary)

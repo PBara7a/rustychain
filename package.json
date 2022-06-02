@@ -19,5 +19,8 @@
   "homepage": "https://github.com/PBara7a/blockchain-sandbox#readme",
   "devDependencies": {
     "jest": "^28.1.0"
+  },
+  "dependencies": {
+    "hex-to-binary": "^1.0.1"
   }
 }
