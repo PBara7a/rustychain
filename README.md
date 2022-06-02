@@ -1,9 +1,12 @@
 # blockchain-sandbox
 
-Learning blockchain concepts
+This blockchain is being built using a **Test Driven Development** approach. The testing framework used to support this was **Jest**.
 
-Building this project helped me:
+What I have learned building this project:
 
-- Learn blockchain fundamentals
-- Practice Test-Driven Development (used Jest)
+- Blockchain fundamentals:
+  - Why a harcoded genesis block is necessary
+  - How blocks are 'linked' to form a chain
+  - Chain validation and chain replacement
+  - What are the roles of nonce and difficulty when mining a block
 - Exposed me to different modules (crypto)

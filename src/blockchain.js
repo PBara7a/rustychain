@@ -26,9 +26,18 @@ class Blockchain {
       return false;
 
     for (let i = 1; i < chain.length; i++) {
-      const { timestamp, previousBlockHash, data, hash } = chain[i];
+      const { timestamp, previousBlockHash, data, hash, nonce, difficulty } =
+        chain[i];
+
       const actualPreviousBlockHash = chain[i - 1].hash;
-      const validHash = cryptographicHash(timestamp, previousBlockHash, data);
+
+      const validHash = cryptographicHash(
+        timestamp,
+        previousBlockHash,
+        data,
+        nonce,
+        difficulty
+      );
 
       if (previousBlockHash !== actualPreviousBlockHash) return false;
       if (hash !== validHash) return false;
