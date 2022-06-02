@@ -2,7 +2,8 @@
 
 Learning blockchain concepts
 
-Using this project to:
+Building this project helped me:
 
 - Learn blockchain fundamentals
 - Practice Test-Driven Development (used Jest)
+- Exposed me to different modules (crypto)
