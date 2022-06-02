@@ -1,4 +1,4 @@
-const { GENESIS_DATA } = require("./utils/config");
+const { GENESIS_DATA, MINE_RATE } = require("./utils/config");
 const cryptographicHash = require("./utils/cryptographicHash");
 
 class Block {
@@ -17,14 +17,18 @@ class Block {
   }
 
   static mineBlock({ lastBlock, data }) {
-    let hash, timestamp;
     const previousBlockHash = lastBlock.hash;
-    const { difficulty } = lastBlock;
+    let hash, timestamp;
+    let { difficulty } = lastBlock;
     let nonce = 0;
 
     do {
       nonce++;
       timestamp = Date.now();
+      difficulty = Block.adjustDifficulty({
+        originalBlock: lastBlock,
+        timestamp,
+      });
       hash = cryptographicHash(
         timestamp,
         previousBlockHash,
@@ -44,6 +48,17 @@ class Block {
     });
 
     return minedBlock;
+  }
+
+  static adjustDifficulty({ originalBlock, timestamp }) {
+    const { difficulty } = originalBlock;
+    // Without this the difficulty can go negative and crash the app
+    if (difficulty < 1) return 1;
+
+    const difference = timestamp - originalBlock.timestamp;
+    if (difference > MINE_RATE) return difficulty - 1;
+
+    return difficulty + 1;
   }
 }
 

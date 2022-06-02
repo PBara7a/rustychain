@@ -1,9 +1,9 @@
 const Block = require("../src/block");
-const { GENESIS_DATA } = require("../src/utils/config");
+const { GENESIS_DATA, MINE_RATE } = require("../src/utils/config");
 const cryptographicHash = require("../src/utils/cryptographicHash");
 
 describe("Block", () => {
-  const timestamp = "aTimestamp";
+  const timestamp = 2000;
   const previousBlockHash = "last-hash";
   const data = ["genesis", "2nd block"];
   const hash = "hash";
@@ -91,6 +91,43 @@ describe("Block", () => {
       expect(minedBlock.hash.substring(0, minedBlock.difficulty)).toEqual(
         "0".repeat(minedBlock.difficulty)
       );
+    });
+
+    it("adjusts the difficulty", () => {
+      const possibleResults = [
+        lastBlock.difficulty + 1,
+        lastBlock.difficulty - 1,
+      ];
+
+      expect(possibleResults.includes(minedBlock.difficulty)).toBe(true);
+    });
+  });
+
+  describe("adjustDifficulty()", () => {
+    it("increases the difficulty if a block is mined quickly", () => {
+      expect(
+        Block.adjustDifficulty({
+          originalBlock: block,
+          timestamp: block.timestamp + MINE_RATE - 100,
+        })
+      ).toEqual(block.difficulty + 1);
+    });
+
+    it("decreases difficulty if a block is mined slowly", () => {
+      expect(
+        Block.adjustDifficulty({
+          originalBlock: block,
+          timestamp: block.timestamp + MINE_RATE + 100,
+        })
+      ).toEqual(block.difficulty - 1);
+    });
+
+    it("has a lower limit of 1", () => {
+      block.difficulty = -1;
+
+      expect(
+        Block.adjustDifficulty({ originalBlock: block, timestamp })
+      ).toEqual(1);
     });
   });
 });
