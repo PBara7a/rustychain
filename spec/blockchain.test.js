@@ -2,10 +2,12 @@ const Blockchain = require("../src/blockchain");
 const Block = require("../src/block");
 
 describe("Blockchain", () => {
-  let blockchain;
+  let blockchain, newChain, originalChain;
 
   beforeEach(() => {
     blockchain = new Blockchain();
+    newChain = new Blockchain();
+    originalChain = blockchain.chain;
   });
 
   it("has a chain array", () => {
@@ -23,33 +25,80 @@ describe("Blockchain", () => {
     expect(blockchain.chain[blockchain.chain.length - 1].data).toEqual(newData);
   });
 
-  describe("isValidChain", () => {
+  describe("isValidChain()", () => {
     beforeEach(() => {
       blockchain.addBlock({ data: "foo" });
       blockchain.addBlock({ data: "bar" });
       blockchain.addBlock({ data: "baz" });
     });
 
-    it("returns false when the genesis block is missing", () => {
-      blockchain.chain[0] = { data: "foo" };
+    describe("When the first block is not the genesis", () => {
+      it("returns false", () => {
+        blockchain.chain[0] = { data: "foo" };
 
-      expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
+        expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
+      });
     });
 
-    it("returns false when a previousBlockHash has changed", () => {
-      blockchain.chain[2].previousBlockHash = "tampered hash";
+    describe("When the previousBlockHash has changed", () => {
+      it("returns false", () => {
+        blockchain.chain[2].previousBlockHash = "tampered hash";
 
-      expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
+        expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
+      });
     });
 
-    it("returns false when there is a block with an invalid field", () => {
-      blockchain.chain[2].data = "tampered data";
+    describe("When there is a block with an invalid field", () => {
+      it("returns false", () => {
+        blockchain.chain[2].data = "tampered data";
 
-      expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
+        expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
+      });
     });
 
-    it("returns true when all blocks are valid", () => {
-      expect(Blockchain.isValidChain(blockchain.chain)).toBe(true);
+    describe("When all blocks in the chain are valid", () => {
+      it("returns true", () => {
+        expect(Blockchain.isValidChain(blockchain.chain)).toBe(true);
+      });
+    });
+  });
+
+  describe("replaceChain()", () => {
+    describe("When the new chain is shorter", () => {
+      it("does not replace the chain", () => {
+        // To make newChain different from blockchain
+        newChain.chain[0] = { data: "Different block" };
+
+        blockchain.replaceChain(newChain.chain);
+
+        expect(blockchain.chain).toEqual(originalChain);
+      });
+    });
+
+    describe("When the new chain is longer", () => {
+      beforeEach(() => {
+        newChain.addBlock({ data: "foo" });
+        newChain.addBlock({ data: "bar" });
+        newChain.addBlock({ data: "baz" });
+      });
+
+      describe("and the chain is invalid", () => {
+        it("does not replace the chain", () => {
+          newChain.chain[2].hash = "Tampered hash";
+
+          blockchain.replaceChain(newChain.chain);
+
+          expect(blockchain.chain).toEqual(originalChain);
+        });
+      });
+
+      describe("and the chain is valid", () => {
+        it("replaces the chain", () => {
+          blockchain.replaceChain(newChain.chain);
+
+          expect(blockchain.chain).toEqual(newChain.chain);
+        });
+      });
     });
   });
 });

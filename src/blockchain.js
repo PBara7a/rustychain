@@ -13,6 +13,13 @@ class Blockchain {
     this.chain.push(newBlock);
   }
 
+  replaceChain(chain) {
+    if (chain.length <= this.chain.length) return;
+    if (!Blockchain.isValidChain(chain)) return;
+
+    this.chain = chain;
+  }
+
   static isValidChain(chain) {
     // compared the string version of the object instead of references
     if (JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis()))
