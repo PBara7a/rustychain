@@ -1,0 +1,23 @@
+{
+  "name": "blockchain-sandbox",
+  "version": "1.0.0",
+  "description": "Learning blockchain concepts",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PBara7a/blockchain-sandbox.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PBara7a/blockchain-sandbox/issues"
+  },
+  "homepage": "https://github.com/PBara7a/blockchain-sandbox#readme",
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
+}
