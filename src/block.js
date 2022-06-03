@@ -1,4 +1,4 @@
-const { GENESIS_DATA, MINE_RATE } = require("./utils/config");
+const { GENESIS_DATA, MINE_RATE } = require("../configs/config");
 const cryptographicHash = require("./utils/cryptographicHash");
 const hexToBinary = require("hex-to-binary");
 

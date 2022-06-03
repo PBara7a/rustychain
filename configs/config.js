@@ -6,8 +6,8 @@ const GENESIS_DATA = {
   previousBlockHash: "*****",
   data: ["Big Bang"],
   hash: "hash",
-  difficulty: INITIAL_DIFFICULTY,
   nonce: 0,
+  difficulty: INITIAL_DIFFICULTY,
 };
 
 module.exports = { GENESIS_DATA, MINE_RATE };

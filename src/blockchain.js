@@ -14,16 +14,24 @@ class Blockchain {
   }
 
   replaceChain(chain) {
-    if (chain.length <= this.chain.length) return;
-    if (!Blockchain.isValidChain(chain)) return;
+    if (chain.length <= this.chain.length) {
+      console.error("The incoming chain must be longer");
+      return;
+    }
+    if (!Blockchain.isValidChain(chain)) {
+      console.error("The incoming chain must be valid");
+      return;
+    }
 
     this.chain = chain;
   }
 
   static isValidChain(chain) {
     // compared the string version of the object instead of references
-    if (JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis()))
+    if (JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) {
+      // console.error("Bad genesis");
       return false;
+    }
 
     for (let i = 1; i < chain.length; i++) {
       const { timestamp, previousBlockHash, data, hash, nonce, difficulty } =

@@ -1,7 +1,7 @@
 // This script is used to monitor average time of mining
 // and current difficulty
 
-const Blockchain = require("../blockchain");
+const Blockchain = require("../src/blockchain");
 
 const blockchain = new Blockchain();
 

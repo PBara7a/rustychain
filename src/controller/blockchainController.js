@@ -4,7 +4,7 @@ const PubSub = require("../pubsub");
 const blockchain = new Blockchain();
 const pubsub = new PubSub(blockchain);
 
-// setTimeout(() => pubsub.broadcastChain(), 1000);
+setTimeout(() => pubsub.broadcastChain(), 1000);
 
 const getChain = (req, res) => {
   res.json({ chain: blockchain.chain });
@@ -19,4 +19,4 @@ const addBlock = (req, res) => {
   res.redirect("/blockchain");
 };
 
-module.exports = { getChain, addBlock };
+module.exports = { getChain, addBlock, blockchain };
