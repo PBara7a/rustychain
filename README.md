@@ -15,7 +15,12 @@ What I have learned building this project:
   - How binary hashes allow superior accuracy in difficulty adjustments, when compared with hex hashes (SHA-256: hex=64 chars, binary=256 bits)
   - Broadcasting changes to the chain (used PubNub)
 - Achievements:
+
   - Successful implementation of a simple blockchain
   - Set up an API that allows interaction with the backend via HTTP requests
   - Implemented a real-time messaging network to broadcast chains
   - Chains are synchronized when a new peer connects to the network
+  - A wallet with a private key to sign and a public key to receive transactions
+
+- To fix:
+  - Messages are being broadcast to all nodes, including the one publishing the message
