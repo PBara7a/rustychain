@@ -94,14 +94,31 @@ describe("Blockchain", () => {
   });
 
   describe("replaceChain()", () => {
-    describe("When the new chain is shorter", () => {
-      it("does not replace the chain", () => {
+    let errorMock;
+
+    beforeEach(() => {
+      // Stop printing in the terminal,
+      // need to create new tests to make sure the mocks
+      // were called
+      errorMock = jest.fn();
+
+      global.console.error = errorMock;
+    });
+
+    describe("When the new chain is not longer", () => {
+      beforeEach(() => {
         // To make newChain different from blockchain
         newChain.chain[0] = { data: "Different block" };
 
         blockchain.replaceChain(newChain.chain);
+      });
 
+      it("does not replace the chain", () => {
         expect(blockchain.chain).toEqual(originalChain);
+      });
+
+      it("logs an error", () => {
+        expect(errorMock).toHaveBeenCalled();
       });
     });
 
@@ -113,12 +130,18 @@ describe("Blockchain", () => {
       });
 
       describe("and the chain is invalid", () => {
-        it("does not replace the chain", () => {
+        beforeEach(() => {
           newChain.chain[2].hash = "Tampered hash";
 
           blockchain.replaceChain(newChain.chain);
+        });
 
+        it("does not replace the chain", () => {
           expect(blockchain.chain).toEqual(originalChain);
+        });
+
+        it("logs an error", () => {
+          expect(errorMock).toHaveBeenCalled();
         });
       });
 
