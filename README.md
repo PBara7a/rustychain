@@ -21,6 +21,7 @@ What I have learned building this project:
   - Implemented a real-time messaging network to broadcast chains
   - Chains are synchronized when a new peer connects to the network
   - A wallet with a private key to sign and a public key to receive transactions
+  - Explored a range of modules
 
 - To fix:
   - Messages are being broadcast to all nodes, including the one publishing the message
