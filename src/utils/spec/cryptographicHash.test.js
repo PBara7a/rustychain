@@ -1,4 +1,4 @@
-const cryptographicHash = require("../src/utils/cryptographicHash.js");
+const cryptographicHash = require("../cryptographicHash.js");
 
 describe("cryptographicHash()", () => {
   it("generates a SHA-256 hash from its arguments", () => {

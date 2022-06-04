@@ -2,9 +2,7 @@
 
 This blockchain is being built using a **Test Driven Development** approach.
 
-The testing framework: **Jest**.
-
-Backend: Node.js, Express.
+Technologies: Node.js, Jest, Express, PubNub.
 
 What I have learned building this project:
 
@@ -16,4 +14,8 @@ What I have learned building this project:
   - How to prevent difficulty jumps
   - How binary hashes allow superior accuracy in difficulty adjustments, when compared with hex hashes (SHA-256: hex=64 chars, binary=256 bits)
   - Broadcasting changes to the chain (used PubNub)
-- I was also exposed to some different modules (crypto, hex-to-binary, pubnub, cross-env)
+- Achievements:
+  - Successful implementation of a simple blockchain
+  - Set up an API that allows interaction with the backend via HTTP requests
+  - Implemented a real-time messaging network to broadcast chains
+  - Chains are synchronized when a new peer connects to the network

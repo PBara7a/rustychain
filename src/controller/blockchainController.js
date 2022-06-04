@@ -4,8 +4,6 @@ const PubSub = require("../pubsub");
 const blockchain = new Blockchain();
 const pubsub = new PubSub(blockchain);
 
-setTimeout(() => pubsub.broadcastChain(), 1000);
-
 const getChain = (req, res) => {
   res.json({ chain: blockchain.chain });
 };
