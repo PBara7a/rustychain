@@ -1,5 +1,5 @@
 const Wallet = require("../index");
-const { verifySignature } = require("../../utils/ellipticCurve");
+const { verifySignature } = require("../../utils");
 
 describe("Wallet", () => {
   let wallet;

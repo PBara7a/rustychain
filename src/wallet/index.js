@@ -1,6 +1,5 @@
 // https://github.com/indutny/elliptic
-const { ec } = require("../utils/ellipticCurve");
-const cryptographicHash = require("../utils/cryptographicHash");
+const { ec, cryptographicHash } = require("../utils");
 
 class Wallet {
   // default for testing/development purposes
