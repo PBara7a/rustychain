@@ -6,7 +6,12 @@ const cryptographicHash = (...args) => {
   const hash = crypto.createHash("sha256");
 
   // args are sorted so the hash is the same regardless of input order
-  hash.update(args.sort().join(" "));
+  hash.update(
+    args
+      .map((arg) => JSON.stringify(arg)) // to make sure a different a hash is generated, even if the obj reference is the same
+      .sort()
+      .join(" ")
+  );
 
   return hash.digest("hex");
 };

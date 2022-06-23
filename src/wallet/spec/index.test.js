@@ -54,7 +54,7 @@ describe("Wallet", () => {
     });
 
     describe("and the amount is valid", () => {
-      let transaction, amount, recipient;
+      let transaction, amount, recipientKey;
 
       beforeEach(() => {
         amount = 50;
@@ -71,7 +71,6 @@ describe("Wallet", () => {
       });
 
       it("outputs the amount to the recipientKey", () => {
-        console.log(transaction);
         expect(transaction.outputMap[recipientKey]).toEqual(amount);
       });
     });
