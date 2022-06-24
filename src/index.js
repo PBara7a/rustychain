@@ -1,6 +1,10 @@
 const app = require("./server");
 const request = require("request");
-const { blockchain } = require("./controller/blockchainController");
+const {
+  blockchain,
+  transactionPool,
+} = require("./controller/blockchainController");
+const TransactionPool = require("./wallet/transactionPool");
 
 const DEFAULT_PORT = 3030;
 const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
@@ -14,6 +18,21 @@ const syncChains = () => {
       blockchain.replaceChain(rootChain);
     }
   });
+
+  request(
+    { url: `${ROOT_NODE_ADDRESS}/blockchain/transaction-pool` },
+    (err, res, body) => {
+      if (!err && res.statusCode === 200) {
+        const rootTransactionPool = JSON.parse(body);
+
+        console.log(
+          "replace transaction pool map on a sync with",
+          rootTransactionPool
+        );
+        transactionPool.setMap(rootTransactionPool);
+      }
+    }
+  );
 };
 
 let peer_port;

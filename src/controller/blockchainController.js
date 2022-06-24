@@ -6,7 +6,7 @@ const TransactionPool = require("../wallet/transactionPool");
 const blockchain = new Blockchain();
 const wallet = new Wallet();
 const transactionPool = new TransactionPool();
-const pubsub = new PubSub({ blockchain, transactionPool });
+const pubsub = new PubSub({ blockchain, transactionPool, wallet });
 
 const getChain = (req, res) => {
   res.json({ chain: blockchain.chain });
@@ -55,4 +55,5 @@ module.exports = {
   addTransactionToPool,
   getTransactionPool,
   blockchain,
+  transactionPool,
 };
