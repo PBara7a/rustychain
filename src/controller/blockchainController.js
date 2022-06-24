@@ -6,7 +6,7 @@ const TransactionPool = require("../wallet/transactionPool");
 const blockchain = new Blockchain();
 const wallet = new Wallet();
 const transactionPool = new TransactionPool();
-const pubsub = new PubSub(blockchain);
+const pubsub = new PubSub({ blockchain, transactionPool });
 
 const getChain = (req, res) => {
   res.json({ chain: blockchain.chain });
@@ -39,6 +39,8 @@ const addTransactionToPool = (req, res) => {
   }
 
   transactionPool.setTransaction(transaction);
+
+  pubsub.broadcastTransaction(transaction);
 
   res.json({ data: transaction });
 };
