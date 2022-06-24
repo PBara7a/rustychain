@@ -43,9 +43,14 @@ const addTransactionToPool = (req, res) => {
   res.json({ data: transaction });
 };
 
+const getTransactionPool = (req, res) => {
+  res.json(transactionPool.transactionMap);
+};
+
 module.exports = {
   getChain,
   addBlock,
   addTransactionToPool,
+  getTransactionPool,
   blockchain,
 };

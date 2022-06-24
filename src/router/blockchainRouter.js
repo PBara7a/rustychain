@@ -3,6 +3,7 @@ const router = express.Router();
 const blockchainController = require("../controller/blockchainController");
 
 router.get("/", blockchainController.getChain);
+router.get("/transaction-pool", blockchainController.getTransactionPool);
 
 router.post("/mine", blockchainController.addBlock);
 router.post("/transact", blockchainController.addTransactionToPool);
