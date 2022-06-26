@@ -39,7 +39,11 @@ const addTransactionToPool = (req, res) => {
     if (transaction) {
       transaction.update({ senderWallet: wallet, recipientKey, amount });
     } else {
-      transaction = wallet.createTransaction({ recipientKey, amount });
+      transaction = wallet.createTransaction({
+        recipientKey,
+        amount,
+        chain: blockchain.chain,
+      });
     }
   } catch (e) {
     return res.status(400).json({ error: e.message });

@@ -1,6 +1,8 @@
 const MINE_RATE = 1000;
 const INITIAL_DIFFICULTY = 3;
 
+const STARTING_BALANCE = 1000;
+
 const GENESIS_DATA = {
   timestamp: "02/06/2022",
   previousBlockHash: "*****",
@@ -14,4 +16,10 @@ const REWARD_INPUT = { address: "authorized-reward" };
 
 const MINING_REWARD = 5;
 
-module.exports = { GENESIS_DATA, MINE_RATE, REWARD_INPUT, MINING_REWARD };
+module.exports = {
+  GENESIS_DATA,
+  MINE_RATE,
+  REWARD_INPUT,
+  MINING_REWARD,
+  STARTING_BALANCE,
+};
