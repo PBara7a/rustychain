@@ -52,10 +52,6 @@ class PubSub {
           default:
             return;
         }
-
-        // if (channel === CHANNELS.BLOCKCHAIN) {
-        //   this.blockchain.replaceChain(parsedMessage);
-        // }
       },
     };
   }
