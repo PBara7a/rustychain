@@ -66,12 +66,22 @@ const mineTransactions = (req, res) => {
   res.redirect("/blockchain");
 };
 
+const walletInfo = (req, res) => {
+  const address = wallet.publicKey
+
+  res.json({ 
+    address, 
+    balance: Wallet.calculateBalance({ chain: blockchain.chain , address })
+  })
+}
+
 module.exports = {
   getChain,
   addBlock,
   addTransactionToPool,
   getTransactionPool,
   mineTransactions,
+  walletInfo,
   blockchain,
   transactionPool,
 };
