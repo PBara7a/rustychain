@@ -10,7 +10,7 @@ const DEFAULT_PORT = 3030;
 const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
 
 const syncChains = () => {
-  request({ url: `${ROOT_NODE_ADDRESS}/blockchain/` }, (err, res, body) => {
+  request({ url: `${ROOT_NODE_ADDRESS}/api/chain` }, (err, res, body) => {
     if (!err && res.statusCode === 200) {
       const rootChain = JSON.parse(body).chain;
 
@@ -20,7 +20,7 @@ const syncChains = () => {
   });
 
   request(
-    { url: `${ROOT_NODE_ADDRESS}/blockchain/transaction-pool` },
+    { url: `${ROOT_NODE_ADDRESS}/api/transaction-pool` },
     (err, res, body) => {
       if (!err && res.statusCode === 200) {
         const rootTransactionPool = JSON.parse(body);

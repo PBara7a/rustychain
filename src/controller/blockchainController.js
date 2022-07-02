@@ -3,6 +3,7 @@ const PubSub = require("../pubsub");
 const Wallet = require("../wallet");
 const TransactionPool = require("../wallet/transactionPool");
 const TransactionMiner = require("../TransactionMiner");
+const path = require("path");
 
 const blockchain = new Blockchain();
 const wallet = new Wallet();
@@ -15,7 +16,7 @@ const transactionMiner = new TransactionMiner({
   pubsub,
 });
 
-const getChain = (req, res) => {
+const chain = (req, res) => {
   res.json({ chain: blockchain.chain });
 };
 
@@ -75,13 +76,18 @@ const walletInfo = (req, res) => {
   })
 }
 
+const page = (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/index.html"));
+}
+
 module.exports = {
-  getChain,
+  chain,
   addBlock,
   addTransactionToPool,
   getTransactionPool,
   mineTransactions,
   walletInfo,
+  page,
   blockchain,
   transactionPool,
 };

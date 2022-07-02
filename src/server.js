@@ -6,6 +6,6 @@ app.use(express.json());
 
 const blockchainRouter = require("./router/blockchainRouter");
 
-app.use("/blockchain", blockchainRouter);
+app.use("/", blockchainRouter);
 
 module.exports = app;
