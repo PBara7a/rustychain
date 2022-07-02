@@ -76,10 +76,6 @@ const walletInfo = (req, res) => {
   })
 }
 
-const page = (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/index.html"));
-}
-
 module.exports = {
   chain,
   addBlock,
@@ -87,7 +83,6 @@ module.exports = {
   getTransactionPool,
   mineTransactions,
   walletInfo,
-  page,
   blockchain,
   transactionPool,
 };
