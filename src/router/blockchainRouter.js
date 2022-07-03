@@ -10,6 +10,4 @@ router.get("/api/wallet-info", blockchainController.walletInfo);
 router.post("/api/mine", blockchainController.addBlock);
 router.post("/api/transact", blockchainController.addTransactionToPool);
 
-router.get("*", blockchainController.page)
-
 module.exports = router;
