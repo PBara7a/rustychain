@@ -4,7 +4,7 @@ const {
   blockchain,
   transactionPool,
 } = require("./controller/blockchainController");
-const TransactionPool = require("./wallet/transactionPool");
+const seedBackend = require("../scripts/seed");
 
 const DEFAULT_PORT = 3030;
 const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
@@ -34,6 +34,8 @@ const syncChains = () => {
     }
   );
 };
+
+seedBackend();
 
 let peer_port;
 
