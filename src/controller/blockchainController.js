@@ -64,7 +64,7 @@ const getTransactionPool = (req, res) => {
 const mineTransactions = (req, res) => {
   transactionMiner.mineTransactions();
 
-  res.redirect("/blockchain");
+  res.redirect("/api/chain");
 };
 
 const walletInfo = (req, res) => {
@@ -76,6 +76,10 @@ const walletInfo = (req, res) => {
   });
 };
 
+const serveFrontEnd = (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+};
+
 module.exports = {
   chain,
   addBlock,
@@ -83,6 +87,7 @@ module.exports = {
   getTransactionPool,
   mineTransactions,
   walletInfo,
+  serveFrontEnd,
   blockchain,
   transactionPool,
   wallet,
