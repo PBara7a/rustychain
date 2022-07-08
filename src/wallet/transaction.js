@@ -35,27 +35,10 @@ class Transaction {
   }
 
   update({ senderWallet, recipientKey, amount }) {
-    if (amount > this.outputMap[senderWallet.publicKey]) {
-      throw new Error("Amount exceeds balance");
+    if (typeof amount !== "number") {
+      throw new Error("Invalid amount type");
     }
 
-    if (!this.outputMap.hasOwnProperty(recipientKey)) {
-      this.outputMap[recipientKey] = amount;
-    } else {
-      const previousAmount = this.outputMap[recipientKey];
-      console.log(previousAmount);
-      this.outputMap[recipientKey] = previousAmount + amount;
-    }
-
-    this.outputMap[recipientKey] = amount;
-
-    this.outputMap[senderWallet.publicKey] =
-      this.outputMap[senderWallet.publicKey] - amount;
-
-    this.input = this.createInput({ senderWallet, outputMap: this.outputMap });
-  }
-
-  update({ senderWallet, recipientKey, amount }) {
     if (amount > this.outputMap[senderWallet.publicKey]) {
       throw new Error("Amount exceeds balance");
     }

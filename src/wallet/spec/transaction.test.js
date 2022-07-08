@@ -100,7 +100,7 @@ describe("Transaction", () => {
     let originalSignature, originalSenderOutput, nextRecipientKey, nextAmount;
 
     describe("and the amount is invalid", () => {
-      it("throws an error", () => {
+      it("throws an error when the amount exceeds balance", () => {
         expect(() => {
           transaction.update({
             senderWallet,
@@ -108,6 +108,16 @@ describe("Transaction", () => {
             amount: 999999,
           });
         }).toThrow("Amount exceeds balance");
+      });
+
+      it("throws an error when the amount is not a number", () => {
+        expect(() => {
+          transaction.update({
+            senderWallet,
+            recipientKey,
+            amount: "35",
+          });
+        }).toThrow("Invalid amount type");
       });
     });
 
