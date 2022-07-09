@@ -1,5 +1,5 @@
 import axios from "axios";
-const host = process.env.REACT_APP_API_URL;
+const host = document.location.origin;
 
 const client = {
   get: (path) => {
