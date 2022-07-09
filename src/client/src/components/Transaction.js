@@ -1,3 +1,5 @@
+import React from "react";
+
 const Transaction = ({ transaction: { input, outputMap } }) => {
   let recipients;
   if (outputMap) {

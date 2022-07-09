@@ -17,6 +17,12 @@ const Header = () => {
           <Nav.Link as={Link} to="/blocks">
             Blocks
           </Nav.Link>
+          <Nav.Link as={Link} to="/conduct-transaction">
+            Conduct a Transaction
+          </Nav.Link>
+          <Nav.Link as={Link} to="/transaction-pool">
+            Transaction Pool
+          </Nav.Link>
         </Nav>
       </Container>
     </Navbar>
