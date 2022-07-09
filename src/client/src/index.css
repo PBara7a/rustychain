@@ -1,0 +1,18 @@
+body {
+  background-color: #444;
+  color: #fff;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Quicksand";
+  padding: 5% 20% 0% 20%;
+  word-wrap: break-word;
+}
+
+.App {
+  display: grid;
+  place-items: center;
+}
+
+.WalletInfo {
+  width: 50vw;
+}
