@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import client from "../../utils/client";
+import client from "../utils/client";
 
 const WalletInfo = () => {
   const [walletInfo, setWalletInfo] = useState({});

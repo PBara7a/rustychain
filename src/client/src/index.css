@@ -8,11 +8,32 @@ body {
   word-wrap: break-word;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 .App {
   display: grid;
   place-items: center;
 }
 
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
 .WalletInfo {
+  width: 50vw;
+}
+
+.Block {
+  border: 1px solid #fff;
+  padding: 5%;
+  margin: 2%;
+  width: 100%;
+}
+
+.Transaction {
+  padding: 5%;
   width: 50vw;
 }
