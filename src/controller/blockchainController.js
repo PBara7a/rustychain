@@ -5,9 +5,7 @@ const {
   pubsub,
   transactionMiner,
 } = require("../initializeObjs");
-
 const Wallet = require("../wallet");
-
 const path = require("path");
 
 const chain = (req, res) => {
