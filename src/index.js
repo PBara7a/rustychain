@@ -1,9 +1,6 @@
 const app = require("./server");
 const request = require("request");
-const {
-  blockchain,
-  transactionPool,
-} = require("./controller/blockchainController");
+const { blockchain, transactionPool } = require("./initializeObjs");
 const seedBackend = require("../scripts/seed");
 
 const isInDevelopment = process.env.ENV === "development";

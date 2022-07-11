@@ -1,10 +1,10 @@
 const Wallet = require("../src/wallet");
-const { blockchain } = require("../src/controller/blockchainController");
 const {
-  wallet,
+  blockchain,
   transactionPool,
+  wallet,
   transactionMiner,
-} = require("../src/controller/blockchainController");
+} = require("../src/initializeObjs");
 
 const walletFoo = new Wallet();
 const walletBar = new Wallet();

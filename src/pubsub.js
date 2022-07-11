@@ -65,6 +65,7 @@ class PubSub {
   }
 
   broadcastChain() {
+    console.log("broadddddd");
     this.publish({
       channel: CHANNELS.BLOCKCHAIN,
       // can only publish strings
