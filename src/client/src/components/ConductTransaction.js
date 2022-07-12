@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormGroup, FormControl, Button } from "react-bootstrap";
 import client from "../utils/client";
@@ -8,6 +8,14 @@ const ConductTransaction = () => {
     recipient: "",
     amount: 0,
   });
+  const [knownAddresses, setKnownAddresses] = useState(null);
+
+  useEffect(() => {
+    client
+      .get("/api/known-addresses")
+      .then((res) => setKnownAddresses(res.data))
+      .catch((err) => console.error(err));
+  }, []);
 
   const navigate = useNavigate();
 
@@ -63,6 +71,10 @@ const ConductTransaction = () => {
       <Button variant="danger" size="sm" onClick={conductTransaction}>
         Submit
       </Button>
+
+      <br />
+      {knownAddresses &&
+        knownAddresses.map((address) => <div key={address}>{address}</div>)}
     </div>
   );
 };

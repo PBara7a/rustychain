@@ -72,6 +72,22 @@ const serveFrontEnd = (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 };
 
+const knownAddresses = (req, res) => {
+  const addressMap = {};
+
+  for (let i = 1; i < blockchain.chain.length; i++) {
+    const block = blockchain.chain[i];
+
+    for (const transaction of block.data) {
+      const recipient = Object.keys(transaction.outputMap);
+
+      recipient.forEach((recipient) => (addressMap[recipient] = recipient));
+    }
+  }
+
+  res.json(Object.keys(addressMap));
+};
+
 module.exports = {
   chain,
   addBlock,
@@ -80,4 +96,5 @@ module.exports = {
   mineTransactions,
   walletInfo,
   serveFrontEnd,
+  knownAddresses,
 };
