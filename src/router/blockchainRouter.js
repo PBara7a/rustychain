@@ -4,6 +4,8 @@ const blockchainController = require("../controller/blockchainController");
 const path = require("path");
 
 router.get("/api/chain", blockchainController.chain);
+router.get("/api/chain/length", blockchainController.chainLength);
+router.get("/api/chain/:page", blockchainController.chainOnPage);
 router.get("/api/transaction-pool", blockchainController.getTransactionPool);
 router.get("/api/mine-transactions", blockchainController.mineTransactions);
 router.get("/api/wallet-info", blockchainController.walletInfo);
