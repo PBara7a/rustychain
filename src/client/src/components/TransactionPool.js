@@ -36,6 +36,7 @@ const TransactionPool = () => {
     <div className="ConductTransaction">
       <br />
       <h3>Transaction Pool</h3>
+      <br />
       <Button variant="danger" size="sm" onClick={mineTransactions}>
         Mine Transactions
       </Button>

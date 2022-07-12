@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <>
       <br />
-      <div>Welcome to Rustychain...</div>
+      <h3>Welcome to Rustychain...</h3>
       <br />
       <WalletInfo />
     </>

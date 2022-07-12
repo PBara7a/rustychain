@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import Transaction from "./Transaction";
 
 const Block = ({ timestamp, hash, data }) => {
@@ -36,7 +36,10 @@ const Block = ({ timestamp, hash, data }) => {
 
     return (
       <div>
-        <div>Data: {dataDisplay}</div>
+        <hr />
+        <Card.Subtitle className="mb-2 text-muted">Data:</Card.Subtitle>
+
+        <div>{dataDisplay}</div>
         {hash !== "hash" && (
           <Button variant="danger" size="sm" onClick={toggleDisplayTransaction}>
             Show More
@@ -49,11 +52,18 @@ const Block = ({ timestamp, hash, data }) => {
   const hashDisplay = `${hash.substring(0, 15)}...`;
 
   return (
-    <div className="Block">
-      <div>Hash: {hashDisplay}</div>
-      <div>Timestamp: {new Date(timestamp).toLocaleString()}</div>
-      {getDisplayTransaction()}
-    </div>
+    <Card className="Block">
+      <Card.Body>
+        <Card.Title>Hash</Card.Title>
+        <Card.Text>{hashDisplay}</Card.Text>
+        <hr />
+
+        <Card.Subtitle className="mb-2 text-muted">Timestamp:</Card.Subtitle>
+        <Card.Text>{new Date(timestamp).toLocaleString()}</Card.Text>
+
+        <Card.Text>{getDisplayTransaction()}</Card.Text>
+      </Card.Body>
+    </Card>
   );
 };
 

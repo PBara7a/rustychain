@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FormGroup, FormControl, Button } from "react-bootstrap";
+import {
+  FormGroup,
+  FormControl,
+  Button,
+  FloatingLabel,
+  Card,
+} from "react-bootstrap";
 import client from "../utils/client";
 
 const ConductTransaction = () => {
@@ -50,31 +56,48 @@ const ConductTransaction = () => {
       <h3>Conduct Transaction</h3>
       <br />
       <FormGroup style={{ marginBottom: "0.5rem" }}>
-        <FormControl
-          input="text"
-          placeholder="recipient"
-          name="recipient"
-          value={transactionData.recipient}
-          onChange={handleChange}
-        />
+        <FloatingLabel label="recipient" style={{ fontSize: "0.8rem" }}>
+          <FormControl
+            input="text"
+            placeholder="recipient"
+            name="recipient"
+            value={transactionData.recipient}
+            onChange={handleChange}
+          />
+        </FloatingLabel>
       </FormGroup>
 
       <FormGroup>
-        <FormControl
-          input="number"
-          placeholder="amount"
-          name="amount"
-          value={transactionData.amount}
-          onChange={handleChange}
-        />
+        <FloatingLabel label="amount" style={{ fontSize: "0.8rem" }}>
+          <FormControl
+            input="number"
+            placeholder="amount"
+            name="amount"
+            value={transactionData.amount}
+            onChange={handleChange}
+            className="mb-2"
+          />
+        </FloatingLabel>
       </FormGroup>
       <Button variant="danger" size="sm" onClick={conductTransaction}>
         Submit
       </Button>
 
       <br />
-      {knownAddresses &&
-        knownAddresses.map((address) => <div key={address}>{address}</div>)}
+      <br />
+
+      <Card className="Block">
+        <Card.Body>
+          <Card.Title>Known Adresses</Card.Title>
+          {knownAddresses &&
+            knownAddresses.map((address) => (
+              <Card.Text key={address}>
+                <hr />
+                {address}
+              </Card.Text>
+            ))}
+        </Card.Body>
+      </Card>
     </div>
   );
 };

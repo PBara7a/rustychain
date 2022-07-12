@@ -34,7 +34,7 @@ const syncChains = () => {
   );
 };
 
-if (isInDevelopment) {
+if (!isInDevelopment) {
   seedBackend();
 }
 

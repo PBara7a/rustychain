@@ -1,4 +1,5 @@
 import React from "react";
+import { Card, ListGroup } from "react-bootstrap";
 
 const Transaction = ({ transaction: { input, outputMap } }) => {
   let recipients;
@@ -7,18 +8,25 @@ const Transaction = ({ transaction: { input, outputMap } }) => {
   }
 
   return (
-    <div className="Transaction">
-      <div>
-        From: {`${input.address.substring(0, 20)}...`} | Balance: {input.amount}
-      </div>
+    <Card className="Transaction">
+      <Card.Body>
+        <Card.Subtitle className="mb-2 text-muted">From:</Card.Subtitle>
+        <Card.Text>
+          {`${input.address.substring(0, 20)}...`} | Balance: {input.amount}
+        </Card.Text>
+        <hr />
 
-      {recipients.map((recipient) => (
-        <div key={recipient}>
-          To: {`${recipient.substring(0, 20)}...`} | Sent:{" "}
-          {outputMap[recipient]}
-        </div>
-      ))}
-    </div>
+        <Card.Subtitle className="mb-2 text-muted">To:</Card.Subtitle>
+        <ListGroup variant="flush">
+          {recipients.map((recipient) => (
+            <ListGroup.Item key={recipient} className="TransactionItem">
+              {`${recipient.substring(0, 20)}...`} | Sent:{" "}
+              {outputMap[recipient]}
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+      </Card.Body>
+    </Card>
   );
 };
 
