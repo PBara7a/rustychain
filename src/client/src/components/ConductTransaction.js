@@ -1,27 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  FormGroup,
-  FormControl,
-  Button,
-  FloatingLabel,
-  Card,
-} from "react-bootstrap";
+import { FormGroup, FormControl, Button, FloatingLabel } from "react-bootstrap";
 import client from "../utils/client";
+import KnownAddresses from "./KnownAddresses";
 
 const ConductTransaction = () => {
   const [transactionData, setTransactionData] = useState({
     recipient: "",
     amount: 0,
   });
-  const [knownAddresses, setKnownAddresses] = useState(null);
-
-  useEffect(() => {
-    client
-      .get("/api/known-addresses")
-      .then((res) => setKnownAddresses(res.data))
-      .catch((err) => console.error(err));
-  }, []);
 
   const navigate = useNavigate();
 
@@ -86,18 +73,7 @@ const ConductTransaction = () => {
       <br />
       <br />
 
-      <Card className="Block">
-        <Card.Body>
-          <Card.Title>Known Adresses</Card.Title>
-          {knownAddresses &&
-            knownAddresses.map((address) => (
-              <Card.Text key={address}>
-                <hr />
-                {address}
-              </Card.Text>
-            ))}
-        </Card.Body>
-      </Card>
+      <KnownAddresses />
     </div>
   );
 };

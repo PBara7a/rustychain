@@ -30,7 +30,8 @@ ul {
 
 .WalletInfo,
 .ConductTransaction,
-.Block {
+.Block,
+.KnownAddresses {
   width: 50vw;
   padding: 1%;
 }
