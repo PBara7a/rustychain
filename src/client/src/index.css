@@ -73,6 +73,28 @@ ul {
   box-shadow: none;
 }
 
+.page-btns-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.2rem;
+  width: 50vw;
+}
+
+.page-btn {
+  display: grid;
+  place-content: center;
+  background-color: #212529;
+  border: none;
+  width: 1.5rem;
+}
+
+.page-btn:hover,
+.page-btn:focus {
+  background-color: #484b4e;
+  border: none;
+  box-shadow: none;
+}
+
 /* --------- */
 /* Scrollbar */
 /* --------- */

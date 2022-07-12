@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, ButtonGroup } from "react-bootstrap";
 import client from "../utils/client";
 import Block from "./Block";
 
@@ -26,22 +26,23 @@ const Blocks = () => {
     <>
       <br />
       <h3>Blocks</h3>
-      <div>
-        {[...Array(Math.ceil(chainLength / 5)).keys()].map((key) => {
-          const pageNr = key + 1;
-          return (
-            <>
+
+      <div className="page-btns-container">
+        <span className="spacer"></span>
+        <ButtonGroup size="sm">
+          {[...Array(Math.ceil(chainLength / 5)).keys()].map((key) => {
+            const pageNr = key + 1;
+            return (
               <Button
-                size="sm"
-                variant="outline-danger"
+                className="page-btn"
                 key={key}
                 onClick={() => setPage(pageNr)}
               >
                 {pageNr}
-              </Button>{" "}
-            </>
-          );
-        })}
+              </Button>
+            );
+          })}
+        </ButtonGroup>
       </div>
 
       {blocksData &&
