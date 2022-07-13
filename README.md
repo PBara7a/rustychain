@@ -25,7 +25,6 @@ Technologies: **Node.js, Jest, Express, PubNub, React.**
   - Everything is being stored in memory.
 
 - Next steps:
-  - Extract controller functions to their respective domains.
   - Better organization of files.
   - Make the chain data persistent.
   - User sign in and login to access their personal wallet.
