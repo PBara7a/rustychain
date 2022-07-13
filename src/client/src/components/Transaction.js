@@ -12,7 +12,6 @@ const Transaction = ({ transaction: { input, outputMap } }) => {
       <Card.Body>
         <Card.Subtitle className="mb-2 text-muted">From:</Card.Subtitle>
         <Card.Text>
-          {console.log(input.address.length)}
           {`${input.address.substring(0, 10)}...${input.address.substring(
             120
           )}`}{" "}

@@ -74,9 +74,13 @@ const getTransactionPool = (req, res) => {
 };
 
 const mineTransactions = (req, res) => {
-  transactionMiner.mineTransactions();
+  try {
+    transactionMiner.mineTransactions();
 
-  res.redirect("/api/chain");
+    res.redirect("/api/chain");
+  } catch (err) {
+    res.status(406).json({ error: err.message });
+  }
 };
 
 const walletInfo = (req, res) => {

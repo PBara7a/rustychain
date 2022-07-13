@@ -25,11 +25,10 @@ const TransactionPool = () => {
   }, []);
 
   const mineTransactions = () => {
-    client.get("/api/mine-transactions").then((res) => {
-      if (res.status === 200) {
-        alert("Success!");
-      }
-    });
+    client
+      .get("/api/mine-transactions")
+      .then(() => alert("Success!"))
+      .catch((err) => console.error(err));
   };
 
   return (

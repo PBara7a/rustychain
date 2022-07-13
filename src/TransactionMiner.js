@@ -11,6 +11,10 @@ class TransactionMiner {
   mineTransactions() {
     const validTransactions = this.transactionPool.validTransactions();
 
+    if (validTransactions.length === 0) {
+      throw new Error("No valid transactions");
+    }
+
     validTransactions.push(
       Transaction.rewardTransaction({ minerWallet: this.wallet })
     );

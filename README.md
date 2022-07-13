@@ -23,7 +23,6 @@ Technologies: **Node.js, Jest, Express, PubNub, React.**
 
   - Messages are being broadcast to all nodes, including the one publishing the message.
   - Everything is being stored in memory.
-  - A mining reward is being given even when there is nothing in the transacion pool.
 
 - Next steps:
   - Extract controller functions to their respective domains.
@@ -49,3 +48,5 @@ Technologies: **Node.js, Jest, Express, PubNub, React.**
 https://calm-harbor-77723.herokuapp.com/
 
 Currently there is no way to access different wallets on the live demo.
+
+If the request times out, just retry after a few seconds (Heroku free tier...)
