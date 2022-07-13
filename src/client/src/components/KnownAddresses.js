@@ -7,7 +7,7 @@ const KnownAddresses = () => {
 
   useEffect(() => {
     client
-      .get("/api/known-addresses")
+      .get("/addresses")
       .then((res) => setKnownAddresses(res.data))
       .catch((err) => console.error(err));
   }, []);

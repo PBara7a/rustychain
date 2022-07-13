@@ -32,7 +32,7 @@ const ConductTransaction = () => {
     };
 
     client
-      .post("/api/transact", data)
+      .post("/transactions/transact", data)
       .then(() => navigate("/transaction-pool"))
       .catch((err) => alert(err.message));
   };

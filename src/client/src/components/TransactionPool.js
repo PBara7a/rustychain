@@ -10,13 +10,13 @@ const TransactionPool = () => {
 
   useEffect(() => {
     client
-      .get("/api/transaction-pool")
+      .get("/transactions/pool")
       .then((res) => setTransactionPoolMap(res.data))
       .catch((err) => console.error(err));
 
     const refreshInterval = setInterval(() => {
       client
-        .get("/api/transaction-pool")
+        .get("/transactions/pool")
         .then((res) => setTransactionPoolMap(res.data))
         .catch((err) => console.error(err));
     }, refreshTransactionPoolIntervalTime);
@@ -26,7 +26,7 @@ const TransactionPool = () => {
 
   const mineTransactions = () => {
     client
-      .get("/api/mine-transactions")
+      .get("/transactions/mine")
       .then(() => alert("Success!"))
       .catch((err) => console.error(err));
   };

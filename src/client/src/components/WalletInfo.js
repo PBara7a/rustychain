@@ -7,7 +7,7 @@ const WalletInfo = () => {
 
   useEffect(() => {
     client
-      .get("/api/wallet-info")
+      .get("/wallet")
       .then((res) => setWalletInfo(res.data))
       .catch((err) => console.error(err));
   }, []);

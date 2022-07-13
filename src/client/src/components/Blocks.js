@@ -10,14 +10,14 @@ const Blocks = () => {
 
   useEffect(() => {
     client
-      .get("/api/chain/length")
+      .get("/chain/length")
       .then((res) => setChainLength(res.data))
       .catch((err) => console.error(err));
   });
 
   useEffect(() => {
     client
-      .get(`/api/chain/${page}`)
+      .get(`/chain/${page}`)
       .then((res) => setBlocksData(res.data))
       .catch((err) => console.error(err));
   }, [page]);
