@@ -12,16 +12,20 @@ const Transaction = ({ transaction: { input, outputMap } }) => {
       <Card.Body>
         <Card.Subtitle className="mb-2 text-muted">From:</Card.Subtitle>
         <Card.Text>
-          {`${input.address.substring(0, 20)}...`} | Balance: {input.amount}
+          {console.log(input.address.length)}
+          {`${input.address.substring(0, 10)}...${input.address.substring(
+            120
+          )}`}{" "}
+          | Balance: {input.amount}
         </Card.Text>
-        <hr />
 
+        <hr />
         <Card.Subtitle className="mb-2 text-muted">To:</Card.Subtitle>
         <ListGroup variant="flush">
           {recipients.map((recipient) => (
             <ListGroup.Item key={recipient} className="TransactionItem">
-              {`${recipient.substring(0, 20)}...`} | Sent:{" "}
-              {outputMap[recipient]}
+              {`${recipient.substring(0, 10)}...${recipient.substring(120)}`} |
+              Sent: {outputMap[recipient]}
             </ListGroup.Item>
           ))}
         </ListGroup>

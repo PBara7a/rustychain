@@ -49,7 +49,10 @@ const Block = ({ timestamp, hash, data }) => {
     );
   };
 
-  const hashDisplay = `${hash.substring(0, 15)}...`;
+  const hashDisplay =
+    hash.length > 15
+      ? `${hash.substring(0, 15)}...${hash.substring(54)}`
+      : hash;
 
   return (
     <Card className="Block">
