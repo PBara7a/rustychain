@@ -1,27 +1,51 @@
-# blockchain-sandbox
+# Rustychain
 
-This blockchain is being built using a **Test Driven Development** approach.
+## Tools and methodologies
 
-Technologies: Node.js, Jest, Express, PubNub.
+The backend of this blockchain is being built using a **Test Driven Development** approach.
 
-What I have learned building this project:
+Technologies: **Node.js, Jest, Express, PubNub, React.**
 
-- Blockchain fundamentals:
-  - Why a harcoded genesis block is necessary
-  - How blocks are 'linked' to form a chain
-  - Chain validation and chain replacement
-  - What are the roles of nonce and difficulty when mining a block
-  - How to prevent difficulty jumps
-  - How binary hashes allow superior accuracy in difficulty adjustments, when compared with hex hashes (SHA-256: hex=64 chars, binary=256 bits)
-  - Broadcasting changes to the chain (used PubNub)
-- Achievements:
+<hr>
 
-  - Successful implementation of a simple blockchain
-  - Set up an API that allows interaction with the backend via HTTP requests
-  - Implemented a real-time messaging network to broadcast chains
-  - Chains are synchronized when a new peer connects to the network
-  - A wallet with a private key to sign and a public key to receive transactions
-  - Explored a range of modules
+### While building this project:
 
-- To fix:
-  - Messages are being broadcast to all nodes, including the one publishing the message
+- Accomplishments:
+
+  - Built a simple blockchain with block validation and chain validation.
+  - Set up an API that allows interaction with the backend via HTTP requests.
+  - Implemented a real-time messaging network to broadcast chains and transactions.
+  - A wallet with functionality to create signed transactions.
+  - Built a React front end that can be used to interact with the blockchain.
+  - Can start different peers locally, send transactions between them and verify that the chains remain in sync.
+
+- Issues:
+
+  - Messages are being broadcast to all nodes, including the one publishing the message.
+  - Everything is being stored in memory.
+  - A mining reward is being given even when there is nothing in the transacion pool.
+
+- Next steps:
+  - Extract controller functions to their respective domains.
+  - Better organization of files.
+  - Make the chain data persistent.
+  - User sign in and login to access their personal wallet.
+
+<hr>
+
+### Instructions
+
+1. Clone the repository
+2. Install dependencies: npm i
+3. Start the app: npm start
+4. Access the front end on http://localhost:3030
+5. Start a peer: npm run dev-peer
+6. Check the terminal and look for the line: [SERVER] Running on http://localhost:{PORT}/
+7. Access the front end on http://localhost:{PORT} (the port found in the previous step)
+8. Transact!
+
+### Live demo
+
+https://calm-harbor-77723.herokuapp.com/
+
+Currently there is no way to access different wallets on the live demo.
