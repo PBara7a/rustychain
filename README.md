@@ -41,11 +41,3 @@ Technologies: **Node.js, Jest, Express, PubNub, React.**
 6. Check the terminal and look for the line: [SERVER] Running on http://localhost:{PORT}/
 7. Access the front end on http://localhost:{PORT} (the port found in the previous step)
 8. Transact!
-
-### Live demo
-
-https://calm-harbor-77723.herokuapp.com/
-
-Currently there is no way to access different wallets on the live demo.
-
-If the request times out, just retry after a few seconds (Heroku free tier...)
