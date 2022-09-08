@@ -44,8 +44,10 @@ Technologies: **Node.js, Jest, Express, PubNub, React.**
 
 ### Live demo
 
-https://calm-harbor-77723.herokuapp.com/
+https://rustychain.herokuapp.com/
 
-Currently there is no way to access different wallets on the live demo.
+https://rustychain-peer.herokuapp.com/
+
+Open both instances and transact.
 
 If the request times out, just retry after a few seconds (Heroku free tier...)
